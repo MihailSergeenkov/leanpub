@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BookCard from './BookCard';
 
 class App extends React.Component {
@@ -11,5 +12,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  book: PropTypes.object
+};
 
 export default App;
