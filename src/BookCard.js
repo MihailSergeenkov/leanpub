@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AuthorCard from './AuthorCard';
 
@@ -33,6 +34,9 @@ const styles = {
 
 class BookCard extends React.Component {
   render() {
+    if (!this.props.book)
+      return <div>Empty book</div>;
+
     const { 
       book: {
         name,
@@ -72,5 +76,21 @@ class BookCard extends React.Component {
     );
   }
 }
+
+BookCard.propTypes = {
+  book: PropTypes.exact({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    pages: PropTypes.string,
+    language: PropTypes.string,
+    progress: PropTypes.string,
+    link: PropTypes.string,
+    author: PropTypes.object,
+    minimumPrice: PropTypes.string,
+    suggestedPrice: PropTypes.string,
+    collectedAmount: PropTypes.string,
+    expectedAmount: PropTypes.string
+  })
+};
 
 export default BookCard;
