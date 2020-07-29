@@ -18,6 +18,11 @@ const styles = {
     margin: '0px 0px 10px',
     color: 'gray',
   },
+  badAvatar: {
+    backgroundColor: 'grey',
+    width: '100%',
+    minHeight: '50px',
+  }
 };
 
 class AuthorCard extends React.Component {
@@ -37,7 +42,13 @@ class AuthorCard extends React.Component {
     return (
       <div style={styles.root}>
         <div style={styles.avatarBox}>
-          <img style={styles.avatar} src={avatar} alt={fullName} />
+          {
+            avatar ? (
+              <img style={styles.avatar} src={avatar} alt={fullName} />
+            ) : (
+              <div style={styles.badAvatar}>Empty avatar</div>
+            )
+          }
         </div>
         <h4 style={styles.fullName}>
           <a href={`mailto:${email}`}>{fullName}</a>
