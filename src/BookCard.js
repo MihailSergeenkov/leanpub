@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AuthorCard from './AuthorCard';
+import AuthorsList from './AuthorsList';
+import AdditionalInfoModal from './AdditionalInfoModal';
 
 const styles = {
   root: {
@@ -45,11 +46,13 @@ class BookCard extends React.Component {
         language,
         progress,
         link,
-        author,
+        authors,
         minimumPrice,
         suggestedPrice,
         collectedAmount,
-        expectedAmount
+        expectedAmount,
+        readers,
+        additionalInfo
       }
     } = this.props;
   
@@ -58,7 +61,9 @@ class BookCard extends React.Component {
         <div style={styles.cardGeneralInfo}>
           <h3 style={styles.title}>{name}</h3>
           <h6 style={styles.description}>{description}</h6>
-          <AuthorCard author={author} />
+          {readers > 1000 && <h6>Popular book</h6>}
+          <AdditionalInfoModal text={additionalInfo} />
+          <AuthorsList authors={authors} />
         </div>
         <div style={styles.imageBox}>
           <img style={styles.image} src={link} alt={name} />
@@ -71,6 +76,7 @@ class BookCard extends React.Component {
           <div>Pages: {pages}</div>
           <div>Language: {language}</div>
           <div>Progress: {progress}</div>
+          <div>Readers: {readers}</div>
         </div>
       </div>
     );
@@ -85,11 +91,13 @@ BookCard.propTypes = {
     language: PropTypes.string,
     progress: PropTypes.string,
     link: PropTypes.string,
-    author: PropTypes.object,
+    authors: PropTypes.array,
     minimumPrice: PropTypes.string,
     suggestedPrice: PropTypes.string,
     collectedAmount: PropTypes.string,
-    expectedAmount: PropTypes.string
+    expectedAmount: PropTypes.string,
+    readers: PropTypes.number,
+    additionalInfo: PropTypes.string
   })
 };
 
