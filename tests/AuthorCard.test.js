@@ -12,7 +12,7 @@ test('renders author in a card', () => {
     'information': 'Hi, I’m a digital nomad and full stack web engineer.'
   };
 
-  const { getByText } = render(<AuthorCard author={author} />)
+  const { getByText } = render(<AuthorCard author={author} />);
 
   const elementText = `<a href="mailto:${author.email}">${author.fullName}</a>`;
 
@@ -24,6 +24,20 @@ test('renders an empty author in a card', () => {
   const { getByText } = render(<AuthorCard />)
 
   const text = 'Empty author';
+
+  expect(getByText(text)).toBeInTheDocument();
+});
+
+test('renders an empty avatar in a card', () => {
+  const author = {
+    'fullName': 'Swizec Teller',
+    'email': 'swizec_teller@email.com',
+    'information': 'Hi, I’m a digital nomad and full stack web engineer.'
+  };
+  
+  const { getByText } = render(<AuthorCard author={author} />)
+
+  const text = 'Empty avatar';
 
   expect(getByText(text)).toBeInTheDocument();
 });

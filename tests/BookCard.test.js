@@ -40,7 +40,7 @@ test('renders book in a card', () => {
 });
 
 test('renders an empty book in a card', () => {
-  const { getByText } = render(<BookCard />)
+  const { getByText } = render(<BookCard />);
 
   const text = 'Empty book';
 
