@@ -14,10 +14,10 @@ const book = {
   'link': 'https://d2sofvawe08yqg.cloudfront.net/reactd3jses6/hero2x?1549481353',
   'authors': [
     {
-    'fullName': 'Swizec Teller',
-    'email': 'swizec_teller@email.com',
-    'avatar': 'https://d39qdlcrvnra4b.cloudfront.net/avatars/8250/original/Screen_Shot_2012-04-11_at_10.13.10_AM.png?1450662429',
-    'information': 'Hi, I’m a digital nomad and full stack web engineer.'
+      'fullName': 'Swizec Teller',
+      'email': 'swizec_teller@email.com',
+      'avatar': 'https://d39qdlcrvnra4b.cloudfront.net/avatars/8250/original/Screen_Shot_2012-04-11_at_10.13.10_AM.png?1450662429',
+      'information': 'Hi, I’m a digital nomad and full stack web engineer.'
     },
     {
       'fullName': 'Rafael A Irizarry',
