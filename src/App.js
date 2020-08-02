@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookCard from './BookCard';
+import UserInfo from './UserInfo';
+import ContactUs from './ContactUs';
 
 const styles = {
   header: {
     backgroundColor: '#222222',
     color: '#fff',
     minHeight: '50px',
+  },
+  title: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: '1.2em',
     fontWeight: 'bold',
+  },
+  user: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   main: {
     padding: '10px 10%',
@@ -28,13 +36,15 @@ class App extends React.Component {
     return (
       <>
         <header style={styles.header}>
-          Leanpub
+          <div style={styles.title}>Leanpub</div>
+          <div style={styles.user}><UserInfo /></div>
         </header>
         <main style={styles.main}>
           <BookCard book={book} />
         </main>
         <footer style={styles.footer}>
-          &copy; {new Date().getFullYear()}
+          <ContactUs />
+          <div>&copy; {new Date().getFullYear()}</div>
         </footer>
       </>
     );

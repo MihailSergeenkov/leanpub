@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UserCard from './UserCard';
+
 const styles = {
   root: {
     margin: '10px 0px',
@@ -41,18 +43,7 @@ class AuthorCard extends React.Component {
   
     return (
       <div style={styles.root}>
-        <div style={styles.avatarBox}>
-          {
-            avatar ? (
-              <img style={styles.avatar} src={avatar} alt={fullName} />
-            ) : (
-              <div style={styles.badAvatar}>Empty avatar</div>
-            )
-          }
-        </div>
-        <h4 style={styles.fullName}>
-          <a href={`mailto:${email}`}>{fullName}</a>
-        </h4>
+        <UserCard fullName={fullName} email={email} avatar={avatar} />
         <h6 style={styles.information}>{information}</h6>
       </div>
     );
