@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BookCardGeneralInfo from './BookCardGeneralInfo';
-import BookCardImage from './BookCardImage';
-import BookCardAdditionalInfo from './BookCardAdditionalInfo';
+import GeneralInfo from './GeneralInfo';
+import Image from './Image';
+import AdditionalInfo from './AdditionalInfo';
 
 const styles = {
   root: {
@@ -38,18 +38,18 @@ class BookCard extends React.Component {
   
     return (
       <div style={styles.root}>
-        <BookCardGeneralInfo 
+        <GeneralInfo 
           name={name} 
           description={description}
           readers={readers}
           authors={authors}
           additionalInfo={additionalInfo}
         />
-        <BookCardImage 
+        <Image 
           alt={name} 
           src={link}
         />
-        <BookCardAdditionalInfo 
+        <AdditionalInfo 
           minimumPrice={minimumPrice} 
           suggestedPrice={suggestedPrice}
           collectedAmount={collectedAmount}

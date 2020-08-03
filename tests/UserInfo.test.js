@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 
-import authContext from '../src/authContext';
+import AuthContext from '../src/AuthContext';
 import UserInfo from '../src/UserInfo';
 
 test('renders user info', () => {
@@ -14,9 +14,9 @@ test('renders user info', () => {
   };
 
   const { getByText } = render(
-    <authContext.Provider value={{currentUser: user}}>
+    <AuthContext.Provider value={{currentUser: user}}>
       <UserInfo />
-    </authContext.Provider>
+    </AuthContext.Provider>
   );
 
 
@@ -31,9 +31,9 @@ describe('when empty first and last name', () => {
     const user = {};
     
     const { getByText } = render(
-      <authContext.Provider value={{currentUser: user}}>
+      <AuthContext.Provider value={{currentUser: user}}>
         <UserInfo />
-      </authContext.Provider>
+      </AuthContext.Provider>
     );
   
     const text = 'Unknown Unknown';
