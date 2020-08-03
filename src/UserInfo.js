@@ -1,10 +1,10 @@
 import React from 'react';
 
-import authContext from './authContext';
+import AuthContext from './AuthContext';
 import UserCard from './UserCard';
 
 const UserInfo = () => (
-  <authContext.Consumer>
+  <AuthContext.Consumer>
     {
       (data) => {
         const { 
@@ -25,7 +25,7 @@ const UserInfo = () => (
         );
       }
     }
-  </authContext.Consumer>
+  </AuthContext.Consumer>
 );
 
 export default UserInfo;

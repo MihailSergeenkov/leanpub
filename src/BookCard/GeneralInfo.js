@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AuthorsList from './AuthorsList';
-import AdditionalInfoModal from './AdditionalInfoModal';
+import AuthorsList from '../AuthorsList';
+import AdditionalInfoModal from '../AdditionalInfoModal';
 
 const styles = {
   root: {
@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-class BookCardGeneralInfo extends React.Component {
+class GeneralInfo extends React.Component {
   render() {
     const { 
       name,
@@ -40,7 +40,7 @@ class BookCardGeneralInfo extends React.Component {
   }
 }
 
-BookCardGeneralInfo.propTypes = {
+GeneralInfo.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   authors: PropTypes.array,
@@ -48,4 +48,4 @@ BookCardGeneralInfo.propTypes = {
   additionalInfo: PropTypes.string
 };
 
-export default BookCardGeneralInfo;
+export default GeneralInfo;

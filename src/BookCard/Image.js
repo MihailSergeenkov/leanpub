@@ -10,7 +10,7 @@ const styles = {
   },
 };
 
-class BookCardImage extends React.Component {
+class Image extends React.Component {
   render() {
     const { alt, src } = this.props;
   
@@ -22,9 +22,9 @@ class BookCardImage extends React.Component {
   }
 }
 
-BookCardImage.propTypes = {
+Image.propTypes = {
   alt: PropTypes.string,
   src: PropTypes.string,
 };
 
-export default BookCardImage;
+export default Image;

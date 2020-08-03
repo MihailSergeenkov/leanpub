@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
-import authContext from './authContext';
+import AuthContext from './AuthContext';
 
 import './index.css';
 
@@ -55,8 +55,8 @@ const currentUser = {
 };
 
 ReactDOM.render(
-  <authContext.Provider value={{currentUser: currentUser}}>
+  <AuthContext.Provider value={{currentUser: currentUser}}>
     <App book={book} />
-  </authContext.Provider>,
+  </AuthContext.Provider>,
   document.getElementById('root')
 );

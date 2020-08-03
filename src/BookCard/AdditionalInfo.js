@@ -8,7 +8,7 @@ const styles = {
   },
 };
 
-class BookCardAdditionalInfo extends React.Component {
+class AdditionalInfo extends React.Component {
   render() {
     const { 
       pages,
@@ -36,7 +36,7 @@ class BookCardAdditionalInfo extends React.Component {
   }
 }
 
-BookCardAdditionalInfo.propTypes = {
+AdditionalInfo.propTypes = {
   pages: PropTypes.string,
   language: PropTypes.string,
   progress: PropTypes.string,
@@ -47,4 +47,4 @@ BookCardAdditionalInfo.propTypes = {
   readers: PropTypes.number,
 };
 
-export default BookCardAdditionalInfo;
+export default AdditionalInfo;
