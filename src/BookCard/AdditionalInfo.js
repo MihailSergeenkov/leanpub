@@ -8,33 +8,27 @@ const styles = {
   },
 };
 
-class AdditionalInfo extends React.Component {
-  render() {
-    const { 
-      pages,
-      language,
-      progress,
-      minimumPrice,
-      suggestedPrice,
-      collectedAmount,
-      expectedAmount,
-      readers,
-    } = this.props;
-  
-    return (
-      <div style={styles.root}>
-        <div>Minimum price: {minimumPrice}</div>
-        <div>Suggested price: {suggestedPrice}</div>
-        <div>Collected amount: {collectedAmount}</div>
-        <div>Expected amount: {expectedAmount}</div>
-        <div>Pages: {pages}</div>
-        <div>Language: {language}</div>
-        <div>Progress: {progress}</div>
-        <div>Readers: {readers}</div>
-      </div>
-    );
-  }
-}
+const AdditionalInfo = ({ 
+  pages,
+  language,
+  progress,
+  minimumPrice,
+  suggestedPrice,
+  collectedAmount,
+  expectedAmount,
+  readers,
+}) => (
+  <div style={styles.root}>
+    <div>Minimum price: {minimumPrice}</div>
+    <div>Suggested price: {suggestedPrice}</div>
+    <div>Collected amount: {collectedAmount}</div>
+    <div>Expected amount: {expectedAmount}</div>
+    <div>Pages: {pages}</div>
+    <div>Language: {language}</div>
+    <div>Progress: {progress}</div>
+    <div>Readers: {readers}</div>
+  </div>
+);
 
 AdditionalInfo.propTypes = {
   pages: PropTypes.string,

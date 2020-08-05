@@ -18,39 +18,29 @@ const styles = {
   }
 };
 
-class UserCard extends React.Component {
-  render() {
-    const { 
-      fullName,
-      email,
-      avatar,
-    } = this.props;
-
-    return (
-      <div>
-        <div style={styles.avatarBox}>
-          {
-            avatar ? (
-              <img style={styles.avatar} src={avatar} alt={fullName} />
-            ) : (
-              <div style={styles.badAvatar}>Empty avatar</div>
-            )
-          }
-        </div>
-        <h4 style={styles.fullName}>
-          {
-            email ? (
-              <a href={`mailto:${email}`}>{fullName}</a>
-            ) : (
-              <div>{fullName}</div>
-            )
-          }
-          
-        </h4>
-      </div>
-    );
-  }
-}
+const UserCard = ({ fullName, email, avatar }) => (
+  <div>
+    <div style={styles.avatarBox}>
+      {
+        avatar ? (
+          <img style={styles.avatar} src={avatar} alt={fullName} />
+        ) : (
+          <div style={styles.badAvatar}>Empty avatar</div>
+        )
+      }
+    </div>
+    <h4 style={styles.fullName}>
+      {
+        email ? (
+          <a href={`mailto:${email}`}>{fullName}</a>
+        ) : (
+          <div>{fullName}</div>
+        )
+      }
+      
+    </h4>
+  </div>
+);
 
 UserCard.propTypes = {
   fullName: PropTypes.string,

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import GeneralInfo from './GeneralInfo';
 import Image from './Image';
 import AdditionalInfo from './AdditionalInfo';
+import SimilarBooks from '../SimilarBooks';
 
 const styles = {
   root: {
@@ -13,56 +14,53 @@ const styles = {
   },
 };
 
-class BookCard extends React.Component {
-  render() {
-    if (!this.props.book)
-      return <div>Empty book</div>;
+const BookCard = ({ book, similarBooks }) => {
+  if (!book)
+    return <div>Empty book</div>;
 
-    const { 
-      book: {
-        name,
-        description,
-        pages,
-        language,
-        progress,
-        link,
-        authors,
-        minimumPrice,
-        suggestedPrice,
-        collectedAmount,
-        expectedAmount,
-        readers,
-        additionalInfo
-      }
-    } = this.props;
-  
-    return (
-      <div style={styles.root}>
-        <GeneralInfo 
-          name={name} 
-          description={description}
-          readers={readers}
-          authors={authors}
-          additionalInfo={additionalInfo}
-        />
-        <Image 
-          alt={name} 
-          src={link}
-        />
-        <AdditionalInfo 
-          minimumPrice={minimumPrice} 
-          suggestedPrice={suggestedPrice}
-          collectedAmount={collectedAmount}
-          expectedAmount={expectedAmount}
-          pages={pages}
-          language={language}
-          progress={progress}
-          readers={readers}
-        />
-      </div>
-    );
-  }
-}
+  const { 
+    name,
+    description,
+    pages,
+    language,
+    progress,
+    link,
+    authors,
+    minimumPrice,
+    suggestedPrice,
+    collectedAmount,
+    expectedAmount,
+    readers,
+    additionalInfo
+  } = book;
+
+  return (
+    <div style={styles.root}>
+      <GeneralInfo 
+        name={name} 
+        description={description}
+        readers={readers}
+        authors={authors}
+        additionalInfo={additionalInfo}
+      />
+      <Image 
+        alt={name} 
+        src={link}
+      />
+      <AdditionalInfo 
+        minimumPrice={minimumPrice} 
+        suggestedPrice={suggestedPrice}
+        collectedAmount={collectedAmount}
+        expectedAmount={expectedAmount}
+        pages={pages}
+        language={language}
+        progress={progress}
+        readers={readers}
+      />
+      <SimilarBooks similarBooks={similarBooks} />
+    </div>
+  );
+};
 
 BookCard.propTypes = {
   book: PropTypes.exact({
