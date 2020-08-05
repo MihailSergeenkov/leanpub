@@ -10,17 +10,11 @@ const styles = {
   },
 };
 
-class Image extends React.Component {
-  render() {
-    const { alt, src } = this.props;
-  
-    return (
-      <div style={styles.root}>
-        <img style={styles.image} src={src} alt={alt} />
-      </div>
-    );
-  }
-}
+const Image = ({ alt, src }) => (
+  <div style={styles.root}>
+    <img style={styles.image} src={src} alt={alt} />
+  </div>
+);
 
 Image.propTypes = {
   alt: PropTypes.string,

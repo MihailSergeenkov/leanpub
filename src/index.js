@@ -54,9 +54,37 @@ const currentUser = {
   avatarUrl: 'https://d39qdlcrvnra4b.cloudfront.net/avatars/1846165/original/DSC_7016-small.jpg?1581154864'
 };
 
+const similarBooks = [
+  {
+    name: 'Symfony 5: The Fast Track',
+    author: 'Fabien Potencier',
+    image: 'https://d2sofvawe08yqg.cloudfront.net/symfony5-the-fast-track/hero2x?1581170327',
+  },
+  {
+    name: 'The Hundred-Page Machine Learning Book',
+    author: 'Andriy Burkov',
+    image: 'https://d2sofvawe08yqg.cloudfront.net/theMLbook/hero2x?1549509109',
+  },
+  {
+    name: 'Ansible for DevOps',
+    author: 'Jeff Geerling',
+    image: 'https://d2sofvawe08yqg.cloudfront.net/ansible-for-devops/hero2x?1589381387',
+  },
+  {
+    name: 'The PowerShell Scripting and Toolmaking Book',
+    author: 'Don Jones',
+    image: 'https://d2sofvawe08yqg.cloudfront.net/powershell-scripting-toolmaking/hero2x?1593527000',
+  },
+  {
+    name: 'Functional Design and Architecture',
+    author: 'Alexander Granin',
+    image: 'https://d2sofvawe08yqg.cloudfront.net/functional-design-and-architecture/hero2x?1589962550',
+  },
+];
+
 ReactDOM.render(
   <AuthContext.Provider value={{currentUser: currentUser}}>
-    <App book={book} />
+    <App book={book} similarBooks={similarBooks} />
   </AuthContext.Provider>,
   document.getElementById('root')
 );

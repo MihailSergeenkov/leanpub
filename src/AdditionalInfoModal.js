@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -20,41 +20,30 @@ const styles = {
   },
 };
 
-class AdditionalInfoModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
+const AdditionalInfoModal = ({ text }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
-  render() {
-    const { text } = this.props;
-
-    return (
-      <>
-        <a onClick={() => this.toggle()}>Additional info</a>
-        {
-          this.state.isOpen && ReactDOM.createPortal(
-            <div style={styles.overlay}>
-              <div style={styles.body}>
-                {text}
-              </div>
-              <button onClick={() => this.toggle()}>Close</button>
-            </div>,
-            document.getElementById('modal-root')
-          )
-        }
-      </>
-    )
-  }
-}
+  return (
+    <>
+      <a onClick={toggle}>Additional info</a>
+      {
+        isOpen && ReactDOM.createPortal(
+          <div style={styles.overlay}>
+            <div style={styles.body}>
+              {text}
+            </div>
+            <button onClick={toggle}>Close</button>
+          </div>,
+          document.getElementById('modal-root')
+        )
+      }
+    </>
+  );
+};
 
 AdditionalInfoModal.propTypes = {
   text: PropTypes.string,

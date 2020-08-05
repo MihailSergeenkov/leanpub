@@ -18,27 +18,22 @@ const styles = {
   },
 };
 
-class GeneralInfo extends React.Component {
-  render() {
-    const { 
-      name,
-      description,
-      authors,
-      readers,
-      additionalInfo,
-    } = this.props;
-  
-    return (
-      <div style={styles.root}>
-        <h3 style={styles.title}>{name}</h3>
-        <h6 style={styles.description}>{description}</h6>
-        {readers > 1000 && <h6>Popular book</h6>}
-        <AdditionalInfoModal text={additionalInfo} />
-        <AuthorsList authors={authors} />
-      </div>
-    );
-  }
-}
+const GeneralInfo = ({ 
+  name,
+  description,
+  authors,
+  readers,
+  additionalInfo,
+  similarBooks,
+}) => (
+  <div style={styles.root}>
+    <h3 style={styles.title}>{name}</h3>
+    <h6 style={styles.description}>{description}</h6>
+    {readers > 1000 && <h6>Popular book</h6>}
+    <AdditionalInfoModal text={additionalInfo} />
+    <AuthorsList authors={authors} />
+  </div>
+);
 
 GeneralInfo.propTypes = {
   name: PropTypes.string,

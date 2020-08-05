@@ -30,29 +30,25 @@ const styles = {
   },
 };
 
-class App extends React.Component {
-  render() {
-    const { book } = this.props;
-    return (
-      <>
-        <header style={styles.header}>
-          <div style={styles.title}>Leanpub</div>
-          <div style={styles.user}><UserInfo /></div>
-        </header>
-        <main style={styles.main}>
-          <BookCard book={book} />
-        </main>
-        <footer style={styles.footer}>
-          <ContactUs />
-          <div>&copy; {new Date().getFullYear()}</div>
-        </footer>
-      </>
-    );
-  }
-}
+const App = ({ book, similarBooks }) => (
+  <>
+    <header style={styles.header}>
+      <div style={styles.title}>Leanpub</div>
+      <div style={styles.user}><UserInfo /></div>
+    </header>
+    <main style={styles.main}>
+      <BookCard book={book} similarBooks={similarBooks} />
+    </main>
+    <footer style={styles.footer}>
+      <ContactUs />
+      <div>&copy; {new Date().getFullYear()}</div>
+    </footer>
+  </>
+);
 
 App.propTypes = {
-  book: PropTypes.object
+  book: PropTypes.object,
+  similarBooks: PropTypes.array,
 };
 
 export default App;

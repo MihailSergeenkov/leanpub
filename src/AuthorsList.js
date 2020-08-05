@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import AuthorCard from './AuthorCard';
@@ -9,44 +9,32 @@ const styles = {
   },
 };
 
-class AuthorsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAll: false
-    };
-  }
+const AuthorsList = ({ authors }) => {
+  if (!authors)
+    return <div>Empty authors</div>;
 
-  toggleShowAll() {
-    this.setState({
-      showAll: !this.state.showAll
-    });
-  }
+  const [showAll, setShowAll] = useState(false);
 
-  render() {
-    if (!this.props.authors)
-      return <div>Empty authors</div>;
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
 
-    const { authors } = this.props;
-    const { showAll } = this.state;
+  const showedAuthors = 
+    showAll ? authors : authors.slice(0, 3);
 
-    const showedAuthors = 
-      showAll ? authors : authors.slice(0, 3);
-  
-    return (
-      <div style={styles.root}>
-        {
-          showedAuthors.map((author) => (
-            <div key={author.email}>
-              <AuthorCard author={author} />
-            </div>
-          ))
-        }
-        <button onClick={() => this.toggleShowAll()}>Show all</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div style={styles.root}>
+      {
+        showedAuthors.map((author) => (
+          <div key={author.email}>
+            <AuthorCard author={author} />
+          </div>
+        ))
+      }
+      <button onClick={toggleShowAll}>Show all</button>
+    </div>
+  );
+};
 
 AuthorsList.propTypes = {
   authors: PropTypes.array,
