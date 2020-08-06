@@ -24,7 +24,7 @@ const SimilarBookCard = ({ book: { name, author, image }, handleClick }) => (
     </div>
     <div>{name}</div>
     <h6 style={styles.author}>{author}</h6>
-    <button onClick={handleClick(name)}>Don't show</button>
+    <button onClick={handleClick(name)}>Don&apos;t show</button>
   </div>
 );
 
