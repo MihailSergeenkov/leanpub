@@ -5,6 +5,7 @@ import GeneralInfo from './GeneralInfo';
 import Image from './Image';
 import AdditionalInfo from './AdditionalInfo';
 import SimilarBooks from '../SimilarBooks';
+import Pay from '../Pay';
 
 const styles = {
   root: {
@@ -57,6 +58,7 @@ const BookCard = ({ book, similarBooks }) => {
         progress={progress}
         readers={readers}
       />
+      <Pay minimumPrice={minimumPrice} />
       <SimilarBooks similarBooks={similarBooks} />
     </div>
   );
