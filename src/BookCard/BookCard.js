@@ -76,8 +76,9 @@ BookCard.propTypes = {
     collectedAmount: PropTypes.string,
     expectedAmount: PropTypes.string,
     readers: PropTypes.number,
-    additionalInfo: PropTypes.string
-  })
+    additionalInfo: PropTypes.string,
+  }),
+  similarBooks: PropTypes.array,
 };
 
 export default BookCard;

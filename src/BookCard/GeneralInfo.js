@@ -24,7 +24,6 @@ const GeneralInfo = ({
   authors,
   readers,
   additionalInfo,
-  similarBooks,
 }) => (
   <div style={styles.root}>
     <h3 style={styles.title}>{name}</h3>

@@ -39,4 +39,8 @@ SimilarBooks.propTypes = {
   similarBooks: PropTypes.array,
 };
 
+SimilarBooks.defaultProps = {
+  similarBooks: [],
+};
+
 export default SimilarBooks;
