@@ -15,7 +15,10 @@ const Pay = ({ minimumPrice }) => {
   const [userPay, setUserPay] = useState(minimumPriceInt);
 
   const handleChange = (e) => {
-    setUserPay(parseInt(e.target.value));
+    const userPay = parseInt(e.target.value || 0);
+    userPay > minimumPriceInt ? 
+      setUserPay(userPay) :
+      setUserPay(minimumPriceInt);
   };
 
   return (
