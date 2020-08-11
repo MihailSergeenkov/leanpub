@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BookCard from './BookCard';
+
+import BookContainer from './BookContainer';
 import UserInfo from './UserInfo';
 import ContactUs from './ContactUs';
 
@@ -30,14 +30,14 @@ const styles = {
   },
 };
 
-const App = ({ book, similarBooks }) => (
+const App = () => (
   <>
     <header style={styles.header}>
       <div style={styles.title}>Leanpub</div>
       <div style={styles.user}><UserInfo /></div>
     </header>
     <main style={styles.main}>
-      <BookCard book={book} similarBooks={similarBooks} />
+      <BookContainer />
     </main>
     <footer style={styles.footer}>
       <ContactUs />
@@ -45,10 +45,5 @@ const App = ({ book, similarBooks }) => (
     </footer>
   </>
 );
-
-App.propTypes = {
-  book: PropTypes.object,
-  similarBooks: PropTypes.array,
-};
 
 export default App;
