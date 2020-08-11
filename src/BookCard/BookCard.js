@@ -6,6 +6,7 @@ import Image from './Image';
 import AdditionalInfo from './AdditionalInfo';
 import SimilarBooks from '../SimilarBooks';
 import Pay from '../Pay';
+import ScrollTopButton from '../ScrollTopButton';
 
 const styles = {
   root: {
@@ -60,6 +61,7 @@ const BookCard = ({ book, similarBooks }) => {
       />
       <Pay minimumPrice={minimumPrice} />
       <SimilarBooks similarBooks={similarBooks} />
+      <ScrollTopButton />
     </div>
   );
 };
