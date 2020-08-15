@@ -1,31 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import AuthContext from './AuthContext';
 import UserCard from './UserCard';
 
-const UserInfo = () => (
-  <AuthContext.Consumer>
-    {
-      (data) => {
-        const { 
-          firstName = 'Unknown', 
-          lastName = 'Unknown', 
-          avatarUrl, 
-          email,
-        } = data.currentUser;
+const UserInfo = () => {
+  const { 
+    currentUser: {
+      firstName = 'Unknown', 
+      lastName = 'Unknown', 
+      avatarUrl, 
+      email,
+    },
+  } = useContext(AuthContext);
 
-        const fullName = `${firstName} ${lastName}`;
+  const fullName = `${firstName} ${lastName}`;
 
-        return (
-          <UserCard 
-            fullName={fullName} 
-            email={email} 
-            avatar={avatarUrl} 
-          />
-        );
-      }
-    }
-  </AuthContext.Consumer>
-);
+  return (
+    <UserCard 
+      fullName={fullName} 
+      email={email} 
+      avatar={avatarUrl} 
+    />
+  );
+};
 
 export default UserInfo;

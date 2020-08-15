@@ -7,6 +7,7 @@ import AdditionalInfo from './AdditionalInfo';
 import SimilarBooks from '../SimilarBooks';
 import Pay from '../Pay';
 import ScrollTopButton from '../ScrollTopButton';
+import withLoading from '../HOC/withLoading';
 
 const styles = {
   root: {
@@ -85,4 +86,4 @@ BookCard.propTypes = {
   similarBooks: PropTypes.array,
 };
 
-export default BookCard;
+export default withLoading(BookCard);
