@@ -9,32 +9,33 @@ const styles = {
 };
 
 const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
   const handleClick = () => {
-    console.log({
-      name: name,
-      email: email,
-      message: message,
-    });
+    console.log(form);
   };
 
-  const handleChange = (setField) => {
+  const handleChange = (field) => {
     return (e) => {
-      setField(e.target.value);
+      setForm({
+        ...form,
+        [field]: e.target.value,
+      })
     };
   };
 
   return (
     <span style={styles.root}>
       <label>Name</label>
-      <input type='text' value={name} onChange={handleChange(setName)} />
+      <input type='text' value={form.name} onChange={handleChange('name')} />
       <label>Email</label>
-      <input type='text' value={email} onChange={handleChange(setEmail)} />
+      <input type='text' value={form.email} onChange={handleChange('email')} />
       <label>Message</label>
-      <input type='text' value={message} onChange={handleChange(setMessage)} />
+      <input type='text' value={form.message} onChange={handleChange('message')} />
       <button onClick={handleClick}>Send</button>
     </span>
   );

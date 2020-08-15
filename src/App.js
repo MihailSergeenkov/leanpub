@@ -1,8 +1,10 @@
 import React from 'react';
 
-import BookContainer from './BookContainer';
+import BookCard from './BookCard';
 import UserInfo from './UserInfo';
 import ContactUs from './ContactUs';
+
+import useFetchBook from './hooks/useFetchBook';
 
 const styles = {
   header: {
@@ -30,20 +32,28 @@ const styles = {
   },
 };
 
-const App = () => (
-  <>
-    <header style={styles.header}>
-      <div style={styles.title}>Leanpub</div>
-      <div style={styles.user}><UserInfo /></div>
-    </header>
-    <main style={styles.main}>
-      <BookContainer />
-    </main>
-    <footer style={styles.footer}>
-      <ContactUs />
-      <div>&copy; {new Date().getFullYear()}</div>
-    </footer>
-  </>
-);
+const App = () => {
+  const { book, similarBooks } = useFetchBook();
+
+  return (
+    <>
+      <header style={styles.header}>
+        <div style={styles.title}>Leanpub</div>
+        <div style={styles.user}><UserInfo /></div>
+      </header>
+      <main style={styles.main}>
+        <BookCard
+          book={book}
+          similarBooks={similarBooks}
+          isLoading={!book}
+        />
+      </main>
+      <footer style={styles.footer}>
+        <ContactUs />
+        <div>&copy; {new Date().getFullYear()}</div>
+      </footer>
+    </>
+  );
+};
 
 export default App;
