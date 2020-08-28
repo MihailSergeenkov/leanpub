@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
 import Input from './Input';
 import Result from './Result';
 
-const styles = {
+const useStyles = createUseStyles({
   root: {
-    margin: '10px',
+    margin: 10,
   },
-};
+}, { name: 'Pay' });
+
 
 const Pay = ({ minimumPrice }) => {
+  const classes = useStyles();
+
   const minimumPriceInt = parseInt(minimumPrice);
   const [userPay, setUserPay] = useState(minimumPriceInt);
 
@@ -22,7 +26,7 @@ const Pay = ({ minimumPrice }) => {
   };
 
   return (
-    <div style={styles.root}>
+    <div className={classes.root}>
       <div>Pay</div>
       <Input 
         minimumPrice={minimumPriceInt} 

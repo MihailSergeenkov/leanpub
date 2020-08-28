@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
   root: {
-    maxWidth: 200,
+    maxWidth: 50,
   },
   image: {
     width: '100%',

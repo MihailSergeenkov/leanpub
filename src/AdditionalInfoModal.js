@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
-const styles = {
+const useStyles = createUseStyles({
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
     position: 'absolute',
@@ -16,11 +17,12 @@ const styles = {
   },
   body: {
     backgroundColor: '#fff',
-    padding: '10px',
+    padding: 10,
   },
-};
+}, { name: 'AdditionalInfoModal' });
 
 const AdditionalInfoModal = ({ text }) => {
+  const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -32,8 +34,8 @@ const AdditionalInfoModal = ({ text }) => {
       <a onClick={toggle}>Additional info</a>
       {
         isOpen && ReactDOM.createPortal(
-          <div style={styles.overlay}>
-            <div style={styles.body}>
+          <div className={classes.overlay}>
+            <div className={classes.body}>
               {text}
             </div>
             <button onClick={toggle}>Close</button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
 import GeneralInfo from './GeneralInfo';
 import Image from './Image';
@@ -9,17 +10,25 @@ import Pay from '../Pay';
 import ScrollTopButton from '../ScrollTopButton';
 import withLoading from '../HOC/withLoading';
 
-const styles = {
+const useStyles = createUseStyles({
   root: {
     display: 'flex',
     fontFamily: 'sans-serif',
-    margin: '20px',
+    margin: 20,
+    flexDirection: 'column',
   },
-};
+  '@media (min-width: 800px)': {
+    root: {
+      flexDirection: 'row',
+    },
+  },
+}, { name: 'BookCard' });
 
 const BookCard = ({ book, similarBooks }) => {
   if (!book)
     return <div>Empty book</div>;
+
+  const classes = useStyles();
 
   const { 
     name,
@@ -38,7 +47,7 @@ const BookCard = ({ book, similarBooks }) => {
   } = book;
 
   return (
-    <div style={styles.root}>
+    <div className={classes.root}>
       <GeneralInfo 
         name={name} 
         description={description}

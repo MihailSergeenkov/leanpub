@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
 import AuthorCard from './AuthorCard';
 
-const styles = {
+const useStyles = createUseStyles({
   root: {
+    display: 'flex',
     margin: '10px 0px',
+    flexDirection: 'row',
   },
-};
+  '@media (min-width: 800px)': {
+    root: {
+      flexDirection: 'column',
+    },
+  },
+}, { name: 'AuthorsList' });
 
 const AuthorsList = ({ authors }) => {
   if (!authors)
     return <div>Empty authors</div>;
 
+  const classes = useStyles();
   const [showAll, setShowAll] = useState(false);
 
   const toggleShowAll = () => {
@@ -23,7 +32,7 @@ const AuthorsList = ({ authors }) => {
     showAll ? authors : authors.slice(0, 3);
 
   return (
-    <div style={styles.root}>
+    <div className={classes.root}>
       {
         showedAuthors.map((author) => (
           <div key={author.email}>
