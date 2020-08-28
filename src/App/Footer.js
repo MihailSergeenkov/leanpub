@@ -7,6 +7,7 @@ const useStyles = createUseStyles({
   root: {
     padding: '0 10%',
     marginTop: 50,
+    backgroundColor: 'grey',
   },
 }, { name: 'Footer' });
 
