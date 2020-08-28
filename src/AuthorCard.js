@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
 import UserCard from './UserCard';
 
-const styles = {
+const useStyles = createUseStyles({
   root: {
     margin: '10px 0px',
   },
@@ -11,11 +12,13 @@ const styles = {
     margin: '0px 0px 10px',
     color: 'gray',
   },
-};
+}, { name: 'AuthorCard' });
 
 const AuthorCard = ({ author }) => {
   if (!author)
     return <div>Empty author</div>;
+
+  const classes = useStyles();
 
   const { 
     fullName,
@@ -25,9 +28,9 @@ const AuthorCard = ({ author }) => {
   } = author;
   
   return (
-    <div style={styles.root}>
+    <div className={classes.root}>
       <UserCard fullName={fullName} email={email} avatar={avatar} />
-      <h6 style={styles.information}>{information}</h6>
+      <h6 className={classes.information}>{information}</h6>
     </div>
   );
 };

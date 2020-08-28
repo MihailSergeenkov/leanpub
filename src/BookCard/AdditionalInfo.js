@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createUseStyles } from 'react-jss'
 
-const styles = {
+const useStyles = createUseStyles({
   root: {
     margin: '0px 20px',
-    maxWidth: '200px',
+    maxWidth: 200,
   },
-};
+}, { name: 'AdditionalInfo' })
 
 const AdditionalInfo = ({ 
   pages,
@@ -17,18 +18,22 @@ const AdditionalInfo = ({
   collectedAmount,
   expectedAmount,
   readers,
-}) => (
-  <div style={styles.root}>
-    <div>Minimum price: {minimumPrice}</div>
-    <div>Suggested price: {suggestedPrice}</div>
-    <div>Collected amount: {collectedAmount}</div>
-    <div>Expected amount: {expectedAmount}</div>
-    <div>Pages: {pages}</div>
-    <div>Language: {language}</div>
-    <div>Progress: {progress}</div>
-    <div>Readers: {readers}</div>
-  </div>
-);
+}) => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <div>Minimum price: {minimumPrice}</div>
+      <div>Suggested price: {suggestedPrice}</div>
+      <div>Collected amount: {collectedAmount}</div>
+      <div>Expected amount: {expectedAmount}</div>
+      <div>Pages: {pages}</div>
+      <div>Language: {language}</div>
+      <div>Progress: {progress}</div>
+      <div>Readers: {readers}</div>
+    </div>
+  );
+};
 
 AdditionalInfo.propTypes = {
   pages: PropTypes.string,
