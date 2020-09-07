@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'react-jss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
+import Layout from './Layout';
+import MainBooks from './MainBooks';
+import MainBook from './MainBook';
+import NotFound from './NotFound';
 
 const themes = {
   default: {
@@ -25,10 +27,16 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themes[currentTheme]}>
-      <Header />
-      <Main handleChangeTheme={handleChangeTheme} />
-      <Footer />
-    </ThemeProvider>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact render={() => <MainBooks handleChangeTheme={handleChangeTheme} />} path='/' />
+            <Route component={MainBook} path='/books/:id' />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Router>
+    </ThemeProvider> 
   );
 };
 

@@ -1,26 +1,30 @@
 import React from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-import { createUseStyles, useTheme } from 'react-jss'
 
 import BookCard from '../BookCard';
-import ThemingPanel from './ThemingPanel';
-import useFetchBook from '../hooks/useFetchBook';
+import { useFetchBookFromId } from '../hooks/useFetchBooks';
 
 const useStyles = createUseStyles({
   root: {
     padding: '10px 10%',
     backgroundColor: ({ theme }) => theme.backgroundColor,
   },
-}, { name: 'Main' });
+}, { name: 'MainBook' });
 
-const Main = ({ handleChangeTheme }) => {
+const MainBook = ({ match: { params } }) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
-  const { book, similarBooks } = useFetchBook();
+  const { book, similarBooks } = useFetchBookFromId(params.id);
 
   return (
     <main className={classes.root}>
-      <ThemingPanel handleChangeTheme={handleChangeTheme} />
+      <Helmet>
+        <title>
+          {book ? book.name : 'Looding...' }
+        </title>
+      </Helmet>
       <BookCard
         book={book}
         similarBooks={similarBooks}
@@ -30,8 +34,8 @@ const Main = ({ handleChangeTheme }) => {
   );
 };
 
-Main.propTypes = {
-  handleChangeTheme: PropTypes.func,
+MainBook.propTypes = {
+  match: PropTypes.any,
 };
 
-export default Main;
+export default MainBook;

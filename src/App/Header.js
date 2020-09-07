@@ -1,5 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss'
+import { Link } from 'react-router-dom';
 
 import UserInfo from '../UserInfo';
 
@@ -27,8 +28,12 @@ const Header = () => {
 
   return (
     <header className={classes.root}>
-      <div className={classes.title}>Leanpub</div>
-      <div className={classes.user}><UserInfo /></div>
+      <div className={classes.title}>
+        <Link to={'/'}>Leanpub</Link>
+      </div>
+      <div className={classes.user}>
+        <UserInfo />
+      </div>
     </header>
   );
 };
