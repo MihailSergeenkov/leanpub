@@ -11,14 +11,15 @@ const httpClient = Axios.create({
   },
 });
 
-const _fetchData = () => (
+const _fetchBookFromId = (BookId) => (
   httpClient
-    .get('/books/rectvnNGWsIE6Z0zc')
+    .get(`/books/${BookId}`)
     .then(result => result.data)
-    .then(_mapFromAirTable)
+    .then(_mapBookFromAirTable)
 );
 
-const _mapFromAirTable = (data) => {
+const _mapBookFromAirTable = (data) => {
+  const id = data.id;
   const attrs = data.fields;
 
   const {
@@ -60,7 +61,8 @@ const _mapFromAirTable = (data) => {
     })
   )
 
-  return [{ 
+  return [{
+    id,
     name,
     description,
     pages,
@@ -77,9 +79,9 @@ const _mapFromAirTable = (data) => {
   }, similarBooks];
 };
 
-const useFetchBook = () => {
+export const useFetchBookFromId = (BookId) => {
   const [
-    bookWithSimilarBooks, 
+    bookWithSimilarBooks,
     setBookWithSimilarBooks,
   ] = useState({
     book: null,
@@ -87,16 +89,90 @@ const useFetchBook = () => {
   });
 
   useEffect(() => {
-    _fetchData()
+    _fetchBookFromId(BookId)
       .then((result) => {
         setBookWithSimilarBooks({
           book: result[0],
           similarBooks: result[1],
         })
       })
-  }, [bookWithSimilarBooks]);
+  }, [BookId, bookWithSimilarBooks]);
 
   return bookWithSimilarBooks;
 };
 
-export default useFetchBook;
+const _fetchBooks = () => (
+  httpClient
+    .get('/books')
+    .then(result => result.data)
+    .then(_mapBooksFromAirTable)
+);
+
+const _mapBooksFromAirTable = ({ records }) => {
+  return records.map((record) => {
+    const id = record.id;
+    const attrs = record.fields;
+    const {
+      name,
+      description,
+      pages,
+      language,
+      progress,
+      link,
+      minimumPrice,
+      suggestedPrice,
+      collectedAmount,
+      expectedAmount,
+      readers,
+      additionalInfo,
+      authorsFullNames,
+      authorsEmails,
+      authorsAvatars,
+      authorsInformations,
+    } = attrs;
+
+    const authors = attrs.authors.map(
+      (_, index) => ({
+        fullName: authorsFullNames[index],
+        email: authorsEmails[index],
+        avatar: authorsAvatars[index],
+        information: authorsInformations[index],
+      })
+    );
+
+    return {
+      id,
+      name,
+      description,
+      pages,
+      language,
+      progress,
+      link,
+      minimumPrice,
+      suggestedPrice,
+      collectedAmount,
+      expectedAmount,
+      readers,
+      additionalInfo,
+      authors,
+    };
+  })
+};
+
+const useFetchBooks = () => {
+  const [
+    books, 
+    setBooks,
+  ] = useState([]);
+
+  useEffect(() => {
+    _fetchBooks()
+      .then((result) => {
+        setBooks(result)
+      })
+  }, [books]);
+
+  return books;
+};
+
+export default useFetchBooks;

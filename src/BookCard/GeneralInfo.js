@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createUseStyles } from 'react-jss'
+import { Link } from 'react-router-dom';
 
 import AuthorsList from '../AuthorsList';
 import AdditionalInfoModal from '../AdditionalInfoModal';
@@ -20,6 +21,7 @@ const useStyles = createUseStyles({
 }, { name: 'GeneralInfo' });
 
 const GeneralInfo = ({ 
+  bookId,
   name,
   description,
   authors,
@@ -30,7 +32,9 @@ const GeneralInfo = ({
 
   return (
     <div className={classes.root}>
-      <h3 className={classes.title}>{name}</h3>
+      <h3 className={classes.title}>
+        <Link to={`/books/${bookId}`}>{name}</Link>
+      </h3>
       <h6 className={classes.description}>{description}</h6>
       {readers > 1000 && <h6>Popular book</h6>}
       <AdditionalInfoModal text={additionalInfo} />
@@ -40,6 +44,7 @@ const GeneralInfo = ({
 };
 
 GeneralInfo.propTypes = {
+  bookId: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   authors: PropTypes.array,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 
@@ -18,7 +19,11 @@ test('renders book in a card', () => {
     expectedAmount: '8000.00'
   };
 
-  const { getByText } = render(<BookCard book={book} />)
+  const { getByText } = render(
+    <Router>
+      <BookCard book={book} />
+    </Router>
+  );
 
   const pagesText = `Pages: ${book.pages}`;
   const languageText = `Language: ${book.language}`;
@@ -40,7 +45,11 @@ test('renders book in a card', () => {
 });
 
 test('renders an empty book in a card', () => {
-  const { getByText } = render(<BookCard />);
+  const { getByText } = render(
+    <Router>
+      <BookCard />
+    </Router>
+  );
 
   const text = 'Empty book';
 

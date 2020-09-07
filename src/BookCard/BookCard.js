@@ -30,7 +30,8 @@ const BookCard = ({ book, similarBooks }) => {
 
   const classes = useStyles();
 
-  const { 
+  const {
+    id,
     name,
     description,
     pages,
@@ -48,7 +49,8 @@ const BookCard = ({ book, similarBooks }) => {
 
   return (
     <div className={classes.root}>
-      <GeneralInfo 
+      <GeneralInfo
+        bookId={id}
         name={name} 
         description={description}
         readers={readers}
@@ -78,6 +80,7 @@ const BookCard = ({ book, similarBooks }) => {
 
 BookCard.propTypes = {
   book: PropTypes.exact({
+    id: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
     pages: PropTypes.string,
