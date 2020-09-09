@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 
 import BookCard from '../src/BookCard';
+import WishlistProvider from '../src/WishlistProvider';
 
 test('renders book in a card', () => {
   const book = {
@@ -20,9 +21,11 @@ test('renders book in a card', () => {
   };
 
   const { getByText } = render(
-    <Router>
-      <BookCard book={book} />
-    </Router>
+    <WishlistProvider>
+      <Router>
+        <BookCard book={book} />
+      </Router>
+    </WishlistProvider>
   );
 
   const pagesText = `Pages: ${book.pages}`;
