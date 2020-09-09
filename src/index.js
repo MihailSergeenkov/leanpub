@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
 import AuthContext from './AuthContext';
+import WishlistProvider from './WishlistProvider';
 
 import './index.css';
 
@@ -15,7 +17,11 @@ const currentUser = {
 
 ReactDOM.render(
   <AuthContext.Provider value={{currentUser: currentUser}}>
-    <App />
+    <WishlistProvider>
+      <Router>
+        <App />
+      </Router>
+    </WishlistProvider>
   </AuthContext.Provider>,
   document.getElementById('root')
 );
