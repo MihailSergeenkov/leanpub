@@ -5,15 +5,13 @@ import Header from './Header';
 import Footer from './Footer';
 
 
-const Layout = ({ children }) => {
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
-};
+const Layout = ({ children }) => (
+  <>
+    <Header />
+    {children}
+    <Footer />
+  </>
+);
 
 Layout.propTypes = {
   children: PropTypes.any,

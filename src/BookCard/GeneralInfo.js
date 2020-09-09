@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { createUseStyles } from 'react-jss'
 import { Link } from 'react-router-dom';
 
 import AuthorsList from '../AuthorsList';
 import AdditionalInfoModal from '../AdditionalInfoModal';
+import WishlistContext from '../WishlistContext';
 
 const useStyles = createUseStyles({
   root: {
@@ -29,6 +30,7 @@ const GeneralInfo = ({
   additionalInfo,
 }) => {
   const classes = useStyles();
+  const { addBook: addBookToWishlist } = useContext(WishlistContext);
 
   return (
     <div className={classes.root}>
@@ -38,6 +40,7 @@ const GeneralInfo = ({
       <h6 className={classes.description}>{description}</h6>
       {readers > 1000 && <h6>Popular book</h6>}
       <AdditionalInfoModal text={additionalInfo} />
+      <button onClick={addBookToWishlist(name)}>Add wishlist</button>
       <AuthorsList authors={authors} />
     </div>
   );

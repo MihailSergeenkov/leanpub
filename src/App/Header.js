@@ -21,6 +21,10 @@ const useStyles = createUseStyles({
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  wishlist: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+  },
 }, { name: 'Header' });
 
 const Header = () => {
@@ -33,6 +37,9 @@ const Header = () => {
       </div>
       <div className={classes.user}>
         <UserInfo />
+      </div>
+      <div className={classes.wishlist}>
+        <Link to={'/wishlist'}>Wishlist</Link>
       </div>
     </header>
   );
