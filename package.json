@@ -34,10 +34,12 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "filestack-js": "^3.17.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.8.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "theming": "^3.3.0"

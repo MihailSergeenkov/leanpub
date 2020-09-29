@@ -1,15 +1,5 @@
 import { useState, useEffect } from 'react';
-import Axios from 'axios';
-
-const API_TOKEN = 'keyjnhfZY4RsMqkWT';
-
-const httpClient = Axios.create({
-  baseURL: 'https://api.airtable.com/v0/appskzwlULQeX6my9',
-  timeout: 2000,
-  headers: {
-    Authorization: `Bearer ${API_TOKEN}`
-  },
-});
+import httpClient from '../lib/airtableClient';
 
 const _fetchBookFromId = (BookId) => (
   httpClient
@@ -44,7 +34,7 @@ const _mapBookFromAirTable = (data) => {
     similarBooksImages,
   } = attrs;
 
-  const authors = attrs.authors.map(
+  const authors = attrs.authors && attrs.authors.map(
     (_, index) => ({
       fullName: authorsFullNames[index],
       email: authorsEmails[index],
@@ -53,7 +43,7 @@ const _mapBookFromAirTable = (data) => {
     })
   );
 
-  const similarBooks = attrs.similarBooks.map(
+  const similarBooks = attrs.similarBooks && attrs.similarBooks.map(
     (_, index) => ({
       name: similarBooksNames[index],
       author: similarBooksAuthors[index],

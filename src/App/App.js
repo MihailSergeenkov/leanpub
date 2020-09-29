@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Layout from './Layout';
 import MainBooks from './MainBooks';
+import NewBook from './NewBook';
 import MainBook from './MainBook';
 import Wishlist from '../Wishlist';
 import NotFound from './NotFound';
@@ -31,6 +32,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact render={() => <MainBooks handleChangeTheme={handleChangeTheme} />} path='/' />
+          <Route component={NewBook} path='/books/new' />
           <Route component={MainBook} path='/books/:id' />
           <Route component={Wishlist} path='/wishlist' />
           <Route component={NotFound} />
