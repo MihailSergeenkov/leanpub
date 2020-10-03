@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './App';
-import AuthContext from './AuthContext';
-import WishlistProvider from './WishlistProvider';
+import App from './components/shared/App';
+import AuthContext from './components/shared/Contexts/AuthContext';
+import WishlistProvider from './components/shared/Providers/WishlistProvider';
 
 import './index.css';
 

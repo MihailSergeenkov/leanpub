@@ -22,6 +22,9 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": [
+        "**/__tests__/*.js"
+    ],
     "rules": {
     }
 }
