@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Field = ({ register, label, type, name, options, errors }) => {
+const Field = ({ register, label, type, name, options, errors, defaultValue }) => {
   const component = type === 'select' ? (
     <select ref={register} name={name}>
       {
@@ -13,7 +13,12 @@ const Field = ({ register, label, type, name, options, errors }) => {
       }
     </select>
   ) : (
-      <input ref={register} name={name} type={type} />
+      <input
+        ref={register}
+        name={name}
+        type={type}
+        defaultValue={defaultValue}
+      />
     );
 
   return (
@@ -32,6 +37,7 @@ Field.propTypes = {
   name: PropTypes.string,
   options: PropTypes.array,
   errors: PropTypes.object,
+  defaultValue: PropTypes.string,
 };
 
 export default Field;
