@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start:dev": "webpack-dev-server --config ./webpack/dev.config.js",
+    "build:client": "rm -rf ./dist/assets/* && NODE_ENV=production webpack --config ./webpack/prod.config.js",
     "lint": "eslint --ignore-pattern dist src",
-    "test": "jest"
+    "test": "jest",
+    "start:serve": "serve -s ./dist/assets/"
   },
   "author": "",
   "license": "MIT",
@@ -28,9 +29,12 @@
     "jest": "^26.1.0",
     "mini-css-extract-plugin": "^0.10.0",
     "react-jss": "^10.4.0",
+    "serve": "^11.3.2",
     "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^4.2.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^3.0.0"
   },
   "dependencies": {
     "axios": "^0.19.2",

@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(process.cwd(), 'dist'),
     compress: true,
     port: 9000,
     historyApiFallback: true,
@@ -27,7 +27,15 @@ module.exports = {
         test: /\.css/, 
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[local]--[hash:base64:5]',
+              }
+            }
+          },
         ]
       },
     ],
@@ -38,5 +46,6 @@ module.exports = {
       base: '/',
     }),
     new MiniCssExtractPlugin(),
-  ]
+  ],
+  performance: { hints: false }
 };
